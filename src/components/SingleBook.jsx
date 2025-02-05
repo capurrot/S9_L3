@@ -18,7 +18,7 @@ class SingleBook extends Component {
           className="p-2"
         />
         <Card.Body>
-          <Card.Title className="d-flex align-items-center" style={{ height: "80px" }}>
+          <Card.Title className="d-flex" style={{ height: "120px" }}>
             {this.props.title}
           </Card.Title>
           <Card.Text>

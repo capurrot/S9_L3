@@ -36,7 +36,7 @@ class Booklist extends Component {
                 book.title.toLocaleLowerCase().includes(this.state.searchWords)
             )
             .map((book) => (
-              <Col key={book.asin} md={3}>
+              <Col xs={6} md={4} xl={3} key={book.asin}>
                 <SingleBook img={book.img} title={book.title} price={book.price} />
               </Col>
             ))}
