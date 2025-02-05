@@ -7,22 +7,24 @@ class SingleBook extends Component {
   };
   render() {
     return (
-      <Card style={this.state.selected ? { border: "2px solid red" } : {}}>
+      <Card className="mb-4" style={this.state.selected ? { border: "2px solid red" } : {}}>
         <Card.Img
           onClick={() => {
             this.state.selected ? this.setState({ selected: false }) : this.setState({ selected: true });
           }}
           variant="top"
           src={this.props.img}
-          style={{ maxWidth: "200px", marginInline: "auto" }}
+          style={{ aspectRatio: "9/13", marginInline: "auto", cursor: "pointer" }}
           className="p-2"
         />
         <Card.Body>
-          <Card.Title className="d-flex align-items-center" style={{ height: "150px" }}>
+          <Card.Title className="d-flex align-items-center" style={{ height: "80px" }}>
             {this.props.title}
           </Card.Title>
-          <Card.Text>Prezzo: {this.props.price} €</Card.Text>
-          <Button variant="warning">Acquista</Button>
+          <Card.Text>
+            Prezzo: <span className="badge bg-dark rounded-pill">{this.props.price} €</span>
+          </Card.Text>
+          <Button variant="warning">Aggiungi al carrello</Button>
         </Card.Body>
       </Card>
     );

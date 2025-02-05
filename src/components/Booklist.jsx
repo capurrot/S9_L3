@@ -1,15 +1,49 @@
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Form, FormSelect, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 
-const Booklist = (props) => {
-  return (
-    <Row>
-      {props.books.map((book) => (
-        <Col key={book.asin} md={3}>
-          <SingleBook img={book.img} title={book.title} price={book.price} />
-        </Col>
-      ))}
-    </Row>
-  );
-};
+import { Component } from "react";
+
+class Booklist extends Component {
+  state = {
+    categorySelected: "fantasy",
+    searchWords: "",
+  };
+  render() {
+    return (
+      <Container>
+        <Row>
+          <FormSelect className="mt-5 mb-1" onChange={(e) => this.setState({ categorySelected: e.target.value })}>
+            <option value={"fantasy"}>Fantasy</option>
+            <option value={"history"}>History</option>
+            <option value={"horror"}>Horror</option>
+            <option value={"romance"}>Romance</option>
+            <option value={"scifi"}>Scifi</option>
+          </FormSelect>
+        </Row>
+        <Row>
+          <Form.Control
+            type="text"
+            placeholder="Cerca il titolo di un libro"
+            className="mb-5 mr-sm-2"
+            onChange={(e) => this.setState({ searchWords: e.target.value.toLocaleLowerCase() })}
+          />
+        </Row>
+        <Row>
+          {this.props.books
+            .filter(
+              (book) =>
+                book.category === this.state.categorySelected &&
+                book.title.toLocaleLowerCase().includes(this.state.searchWords)
+            )
+            .map((book) => (
+              <Col key={book.asin} md={3}>
+                <SingleBook img={book.img} title={book.title} price={book.price} />
+              </Col>
+            ))}
+        </Row>
+      </Container>
+    );
+  }
+}
+
 export default Booklist;

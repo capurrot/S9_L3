@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import "./App.css";
 {
   /* import AllTheBooks from "./components/AllTheBooks"; */
@@ -9,15 +8,19 @@ import Welcome from "./components/Welcome";
 import Booklist from "./components/Booklist";
 
 import fantasy from "./databooks/fantasy.json";
+import history from "./databooks/history.json";
+import horror from "./databooks/horror.json";
+import romance from "./databooks/romance.json";
+import scifi from "./databooks/scifi.json";
+
+const books = [...fantasy, ...history, ...horror, ...romance, ...scifi];
 
 function App() {
   return (
     <>
       <MyNav />
       <Welcome />
-      <Container>
-        <Booklist books={fantasy} />
-      </Container>
+      <Booklist books={books} />
       <MyFooter />
     </>
   );
