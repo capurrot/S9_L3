@@ -1,4 +1,4 @@
-import { Col, Container, Form, FormSelect, Row } from "react-bootstrap";
+import { Alert, Col, Container, Form, FormSelect, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 
 import { Component } from "react";
@@ -40,6 +40,15 @@ class Booklist extends Component {
                 <SingleBook img={book.img} title={book.title} price={book.price} />
               </Col>
             ))}
+          {this.props.books.filter(
+            (book) =>
+              book.category === this.state.categorySelected &&
+              book.title.toLocaleLowerCase().includes(this.state.searchWords)
+          ).length === 0 && (
+            <Alert variant="danger" className="mb-5">
+              Nessun Libro trovato
+            </Alert>
+          )}
         </Row>
       </Container>
     );
