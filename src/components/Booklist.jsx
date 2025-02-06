@@ -9,6 +9,10 @@ class Booklist extends Component {
     searchWords: "",
   };
   render() {
+    const filteredBooks = this.props.books.filter(
+      (book) =>
+        book.category === this.state.categorySelected && book.title.toLocaleLowerCase().includes(this.state.searchWords)
+    );
     return (
       <Container>
         <Row>
@@ -29,22 +33,12 @@ class Booklist extends Component {
           />
         </Row>
         <Row>
-          {this.props.books
-            .filter(
-              (book) =>
-                book.category === this.state.categorySelected &&
-                book.title.toLocaleLowerCase().includes(this.state.searchWords)
-            )
-            .map((book) => (
-              <Col xs={6} md={4} xl={3} key={book.asin}>
-                <SingleBook img={book.img} title={book.title} price={book.price} />
-              </Col>
-            ))}
-          {this.props.books.filter(
-            (book) =>
-              book.category === this.state.categorySelected &&
-              book.title.toLocaleLowerCase().includes(this.state.searchWords)
-          ).length === 0 && (
+          {filteredBooks.map((book) => (
+            <Col xs={6} md={4} xl={3} key={book.asin}>
+              <SingleBook img={book.img} title={book.title} price={book.price} />
+            </Col>
+          ))}
+          {filteredBooks.length === 0 && (
             <Alert variant="danger" className="mb-5">
               Nessun Libro trovato
             </Alert>
