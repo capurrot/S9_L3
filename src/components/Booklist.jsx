@@ -17,12 +17,15 @@ class Booklist extends Component {
       <Container>
         <Row>
           <Col auto>
-            <FormSelect className="mt-5 mb-1" onChange={(e) => this.setState({ categorySelected: e.target.value })}>
-              <option value={"fantasy"}>Fantasy</option>
-              <option value={"history"}>History</option>
-              <option value={"horror"}>Horror</option>
-              <option value={"romance"}>Romance</option>
-              <option value={"scifi"}>Scifi</option>
+            <FormSelect
+              className="mt-5 mb-1"
+              onChange={(e) => this.setState({ categorySelected: e.target.value.toLocaleLowerCase() })}
+            >
+              <option>Fantasy</option>
+              <option>History</option>
+              <option>Horror</option>
+              <option>Romance</option>
+              <option>Scifi</option>
             </FormSelect>
           </Col>
         </Row>
