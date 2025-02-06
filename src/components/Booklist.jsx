@@ -16,21 +16,29 @@ class Booklist extends Component {
     return (
       <Container>
         <Row>
-          <FormSelect className="mt-5 mb-1" onChange={(e) => this.setState({ categorySelected: e.target.value })}>
-            <option value={"fantasy"}>Fantasy</option>
-            <option value={"history"}>History</option>
-            <option value={"horror"}>Horror</option>
-            <option value={"romance"}>Romance</option>
-            <option value={"scifi"}>Scifi</option>
-          </FormSelect>
+          <Col className="col-1"></Col>
+          <Col auto>
+            <FormSelect className="mt-5 mb-1" onChange={(e) => this.setState({ categorySelected: e.target.value })}>
+              <option value={"fantasy"}>Fantasy</option>
+              <option value={"history"}>History</option>
+              <option value={"horror"}>Horror</option>
+              <option value={"romance"}>Romance</option>
+              <option value={"scifi"}>Scifi</option>
+            </FormSelect>
+          </Col>
+          <Col className="col-1"></Col>
         </Row>
         <Row>
-          <Form.Control
-            type="text"
-            placeholder="Cerca il titolo di un libro"
-            className="mb-5 mr-sm-2"
-            onChange={(e) => this.setState({ searchWords: e.target.value.toLocaleLowerCase() })}
-          />
+          <Col className="col-1"></Col>
+          <Col auto>
+            <Form.Control
+              type="text"
+              placeholder="Cerca il titolo di un libro"
+              className="mb-5 mr-sm-2"
+              onChange={(e) => this.setState({ searchWords: e.target.value.toLocaleLowerCase() })}
+            />
+          </Col>
+          <Col className="col-1"></Col>
         </Row>
         <Row>
           {filteredBooks.map((book) => (
