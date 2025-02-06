@@ -48,7 +48,7 @@ class Booklist extends Component {
           ))}
           {filteredBooks.length === 0 && (
             <Alert variant="danger" className="mb-5">
-              Nessun Libro trovato
+              Nessun Libro con ricerca {'"' + this.state.searchWords + '"'} trovato
             </Alert>
           )}
         </Row>
