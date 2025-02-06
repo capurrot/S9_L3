@@ -16,7 +16,6 @@ class Booklist extends Component {
     return (
       <Container>
         <Row>
-          <Col className="col-1"></Col>
           <Col auto>
             <FormSelect className="mt-5 mb-1" onChange={(e) => this.setState({ categorySelected: e.target.value })}>
               <option value={"fantasy"}>Fantasy</option>
@@ -26,10 +25,8 @@ class Booklist extends Component {
               <option value={"scifi"}>Scifi</option>
             </FormSelect>
           </Col>
-          <Col className="col-1"></Col>
         </Row>
         <Row>
-          <Col className="col-1"></Col>
           <Col auto>
             <Form.Control
               type="text"
@@ -38,7 +35,6 @@ class Booklist extends Component {
               onChange={(e) => this.setState({ searchWords: e.target.value.toLocaleLowerCase() })}
             />
           </Col>
-          <Col className="col-1"></Col>
         </Row>
         <Row>
           {filteredBooks.map((book) => (
@@ -47,9 +43,11 @@ class Booklist extends Component {
             </Col>
           ))}
           {filteredBooks.length === 0 && (
-            <Alert variant="danger" className="mb-5">
-              Nessun Libro con ricerca {'"' + this.state.searchWords + '"'} trovato
-            </Alert>
+            <Col auto>
+              <Alert variant="danger" className="mb-5">
+                Nessun Libro con ricerca {'"' + this.state.searchWords + '"'} trovato
+              </Alert>
+            </Col>
           )}
         </Row>
       </Container>
